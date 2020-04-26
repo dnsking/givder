@@ -46,6 +46,7 @@ import com.yuyakaido.android.cardstackview.Direction;
 import com.yuyakaido.android.cardstackview.Duration;
 import com.yuyakaido.android.cardstackview.SwipeAnimationSetting;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -263,7 +264,14 @@ public class ContentFragment extends Fragment {
             holder.numberOfPlatesTextView.setText(userNetworkAction.getPlates());
             holder.descriptionTextView.setText(userNetworkAction.getDescription());
             holder.timeView.setText(Long.toString(new Date(new Date().getTime()-userNetworkAction.getTimeExpiration()).getHours()));
+            try {
+                holder.distanceTextView.setText(  Utils.LocationName(getActivity(),Double.parseDouble(userNetworkAction.getLat()),
+                        Double.parseDouble(userNetworkAction.getLon())));
+            } catch (IOException e) {
+                e.printStackTrace();
 
+                holder.distanceTextView.setText("Unknown Location");
+            }
 
 
         }
