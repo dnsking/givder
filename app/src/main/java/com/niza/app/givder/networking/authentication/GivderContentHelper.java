@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.niza.app.givder.App;
 import com.niza.app.givder.data.user.Authentication;
 import com.niza.app.givder.networking.actions.GetContentNetworkAction;
+import com.niza.app.givder.networking.actions.NetworkAction;
 import com.niza.app.givder.networking.actions.UserNetworkAction;
 
 import java.util.concurrent.TimeUnit;
@@ -18,7 +19,8 @@ import okhttp3.Response;
 
 public class GivderContentHelper {
 
-    public static String AddContent(Context context, UserNetworkAction userNetworkAction) throws Exception {
+
+    public static String AddContent(Context context, NetworkAction userNetworkAction) throws Exception {
 
 
         Authentication authentication = GivderAccountHelper.FetchAccount(context);

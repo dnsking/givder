@@ -77,6 +77,30 @@ public class GivderMessageDBHelper {
     public void deleteEntry(int id){
         db.delete(dbhelper.getTableName(), GivderMessageDB.time+"="+id, null);
     }
+    public GiverMessageNetwork[] queryAllTo(String numberTo){
+
+        Cursor cursor = query(null,GivderMessageDB.messageTo+"="+numberTo,null, null, null,null);
+
+        ArrayList<GiverMessageNetwork> giverMessageNetworks = new ArrayList<>();
+        //  cursor.moveToFirst();
+        while (cursor.moveToNext()) {
+            giverMessageNetworks.add(new GiverMessageNetwork(
+
+                    cursor.getString(cursor.getColumnIndex(GivderMessageDB.messageFrom)),
+
+                    cursor.getString(cursor.getColumnIndex(GivderMessageDB.time)),
+
+                    cursor.getString(cursor.getColumnIndex(GivderMessageDB.messageTo)),
+
+
+                    cursor.getString(cursor.getColumnIndex(GivderMessageDB.message)),
+                    cursor.getString(cursor.getColumnIndex(GivderMessageDB.type))));
+
+
+        }
+        cursor.close();
+        return giverMessageNetworks.toArray(new  GiverMessageNetwork[]{});
+    }
     public GiverMessageNetwork[] queryAll(){
 
         Cursor cursor = query( );
