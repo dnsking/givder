@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.github.florent37.shapeofview.shapes.RoundRectView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/button_container"
+        app:shape_roundRect_bottomLeftRadius="10dp"
+        app:shape_roundRect_bottomRightRadius="10dp"
+        app:shape_roundRect_topLeftRadius="10dp"
+        app:shape_roundRect_topRightRadius="10dp"
+
+        app:shape_roundRect_borderWidth="0dp"
+        >
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/contentHolder">
+            <View
+                android:id="@+id/firstCircle"
+                android:layout_width="189dp"
+                android:layout_height="189dp"
+                android:layout_gravity="top|right"
+                android:layout_marginRight="-64dp"
+                android:layout_marginTop="-64dp"></View>
+            <View
+                android:id="@+id/secondCircle"
+                android:layout_width="126dp"
+                android:layout_height="126dp"
+                android:layout_gravity="bottom|left"
+                android:layout_marginLeft="-42dp"
+                android:layout_marginBottom="-42dp"></View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:id="@+id/numberOfPlatesTextView"
+                    android:layout_width  = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:textSize      = "56sp"
+                    android:fontFamily      = "sans-serif-medium"
+                    android:textColor     = "#212121"
+                    android:text          = ""
+                    android:singleLine="false"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp"
+                    />
+
+                <TextView
+                    android:layout_width  = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:textSize      = "14sp"
+                    android:fontFamily      = "sans-serif-medium"
+                    android:textColor     = "#212121"
+                    android:text          = "PLATES"
+                    android:singleLine="false"
+                    />
+
+                <TextView
+                    android:id="@+id/descriptionTextView"
+                    android:layout_width  = "wrap_content"
+                    android:layout_height = "wrap_content"
+                    android:textSize      = "20sp"
+                    android:fontFamily      = "sans-serif-light"
+                    android:textColor     = "#212121"
+                    android:text          = ""
+                    android:singleLine="false"
+                    android:layout_marginTop="18dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="8dp">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width  = "0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center|top">
+                    <TextView
+                        android:id="@+id/distanceTextView"
+                        android:layout_width  = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:textSize      = "32sp"
+                        android:fontFamily      = "sans-serif-medium"
+                        android:textColor     = "#212121"
+                        android:text          = "0"
+                        android:singleLine="true"
+                        />
+                    <TextView
+                        android:layout_width  = "wrap_content"
+                        android:layout_height = "match_parent"
+                        android:textSize      = "12sp"
+                        android:fontFamily      = "sans-serif-medium"
+                        android:textColor     = "#616161"
+                        android:text          = "KM AWAY"
+                        android:singleLine="true"
+                        android:gravity="top"
+                        android:layout_marginLeft="8dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width  = "0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center|top">
+                    <TextView
+                        android:id="@+id/timeView"
+                        android:layout_width  = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:textSize      = "32sp"
+                        android:fontFamily      = "sans-serif-medium"
+                        android:textColor     = "#212121"
+                        android:text          = ""
+                        android:singleLine="true"
+                        />
+                    <TextView
+                        android:layout_width  = "wrap_content"
+                        android:layout_height = "match_parent"
+                        android:textSize      = "12sp"
+                        android:fontFamily      = "sans-serif-medium"
+                        android:textColor     = "#616161"
+                        android:text          = "HOURS LEFT"
+                        android:singleLine="true"
+                        android:gravity="top"
+                        android:layout_marginLeft="8dp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </com.github.florent37.shapeofview.shapes.RoundRectView>
+
+</LinearLayout>

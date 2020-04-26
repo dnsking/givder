@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+<FrameLayout
+    android:id="@+id/mainContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp">
+
+        </com.google.android.material.tabs.TabLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="48dp">
+
+
+        </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_action_button"
+        style="@style/Widget.MaterialComponents.FloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        app:srcCompat="@drawable/ic_add_black_24dp"/>
+</FrameLayout>
+    <FrameLayout
+
+        android:id="@+id/asker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F8B195">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="match_parent"
+                android:layout_height="164dp"
+
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/food_loading"/>
+
+            <TextView
+                android:layout_width  = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:textSize      = "28sp"
+                android:fontFamily      = "sans-serif-medium"
+                android:textColor     = "#212121"
+                android:text          = "You Don't Have Any Contributions Or Requests"
+                android:layout_gravity= "center"
+                android:singleLine="false"
+                android:gravity="center"
+                android:layout_marginTop="8dp"
+                />
+        </LinearLayout>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/makePost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Contribution Or Request"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="32dp">
+
+        </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+    </FrameLayout>
+</FrameLayout>
