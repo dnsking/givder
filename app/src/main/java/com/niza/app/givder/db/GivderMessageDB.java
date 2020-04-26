@@ -18,29 +18,15 @@ public class GivderMessageDB extends SQLiteOpenHelper {
     public static final  String messageTo="messageTo";
     public static final  String message="message";
     public static final  String type="type";
-    public static final  String IsViewed="IsViewed";
-    public static final  String Lat="Lat";
-    public static final  String Lon="Lon";
-    public static final  String TimeExpiration="TimeExpiration";
-    public static final  String Description="Description";
-    public static final  String Plates="Plates";
-    public static final  String Color="Color";
 
-/*
+
     private  static final String DATABASE_CREATE = "CREATE VIRTUAL TABLE "+ TABLE_NAME +
             "  USING fts3("
-            + ContributionId  + " text not null UNIQUE, "
-            + PhoneNumber    + " text not null, "
-            + Type + " text not null, "
-            + IsMatch + " text not null, "
-            + IsAccepted + " text not null, "
-            + IsViewed + " text not null, "
-            + Lat + " integer not null, "
-            + Lon + " integer not null, "
-            + TimeExpiration + " integer not null, "
-            + Description + " text not null, "
-            + Plates + " text not null, "
-            + Color + " text not null);";*/
+            + time  + " text not null UNIQUE, "
+            + messageFrom    + " text not null, "
+            + messageTo + " text not null, "
+            + message + " text not null, "
+            + type + " text not null);";
 
       public GivderMessageDB(Context context, String name, SQLiteDatabase.CursorFactory factory,
                              int version) {
@@ -52,7 +38,7 @@ public class GivderMessageDB extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         App.Log(getClass().getSimpleName()+" Creating all the tables");
         try {
-     //       db.execSQL(DATABASE_CREATE);
+           db.execSQL(DATABASE_CREATE);
 
 
         } catch(SQLiteException ex) {

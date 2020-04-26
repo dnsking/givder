@@ -8,6 +8,13 @@ public class GiverMessageNetwork  extends NetworkAction {
     private String message;
     private String type;
     public GiverMessageNetwork(){}
+    public GiverMessageNetwork( String from, String time,String to,String message,String type){
+        this. from=from;
+        this. time=time;
+        this. to=to;
+        this. message=message;
+        this. type=type;
+    }
     @Override
     public String getAction() {
         return action;
