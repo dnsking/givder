@@ -1,6 +1,7 @@
 package com.niza.app.givder;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -31,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
+    private int loadCount;
+    public void hideProgressBar(){
+        loadCount++;
+        if(loadCount>1){
+            findViewById(R.id.progress_bar).setVisibility(View.GONE);
+        }
+        else{
+            findViewById(R.id.progress_bar).setVisibility(View.VISIBLE);}
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +101,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    private void init(){
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        init();
+    }
+
+    private void init(){
+        loadCount = 0;
+        hideProgressBar();
+        loadCount = 0;
         viewPager.setAdapter(new Adapter());
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));

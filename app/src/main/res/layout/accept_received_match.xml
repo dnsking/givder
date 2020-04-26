@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="202dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="16dp">
     <com.github.florent37.shapeofview.shapes.RoundRectView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,29 +13,16 @@
         app:shape_roundRect_topLeftRadius="10dp"
         app:shape_roundRect_topRightRadius="10dp"
 
-        android:elevation="4dp"
         app:shape_roundRect_borderWidth="0dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
         >
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/contentHolder">
-            <View
-                android:id="@+id/firstCircle"
-                android:layout_width="189dp"
-                android:layout_height="189dp"
-                android:layout_gravity="top|right"
-                android:layout_marginRight="-64dp"
-                android:layout_marginTop="-64dp"></View>
-            <View
-                android:id="@+id/secondCircle"
-                android:layout_width="126dp"
-                android:layout_height="126dp"
-                android:layout_gravity="bottom|left"
-                android:layout_marginLeft="-42dp"
-                android:layout_marginBottom="-42dp"></View>
+            android:id="@+id/contentHolder"
+            android:background="#DFE2E5"
+            android:padding="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,6 +30,28 @@
                 android:orientation="vertical"
                 android:layout_margin="16dp">
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/callButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Call"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        />
+
+                    <Button
+                        android:id="@+id/textButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Text"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_marginLeft="16dp"
+                        />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,7 +68,7 @@
                             android:id="@+id/numberOfPlatesTextView"
                             android:layout_width  = "wrap_content"
                             android:layout_height = "wrap_content"
-                            android:textSize      = "56sp"
+                            android:textSize      = "28sp"
                             android:fontFamily      = "sans-serif-medium"
                             android:textColor     = "#212121"
                             android:text          = ""
@@ -69,7 +79,7 @@
                         <TextView
                             android:layout_width  = "wrap_content"
                             android:layout_height = "wrap_content"
-                            android:textSize      = "14sp"
+                            android:textSize      = "12sp"
                             android:fontFamily      = "sans-serif-medium"
                             android:textColor     = "#212121"
                             android:text          = "PLATES"
@@ -81,7 +91,7 @@
                         android:id="@+id/descriptionTextView"
                         android:layout_width  = "wrap_content"
                         android:layout_height = "wrap_content"
-                        android:textSize      = "20sp"
+                        android:textSize      = "18sp"
                         android:fontFamily      = "sans-serif-light"
                         android:textColor     = "#212121"
                         android:text          = ""
@@ -100,7 +110,7 @@
                 android:layout_marginBottom="8dp">
 
                 <LinearLayout
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:layout_width  = "0dp"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -109,22 +119,11 @@
                         android:id="@+id/distanceTextView"
                         android:layout_width  = "wrap_content"
                         android:layout_height = "wrap_content"
-                        android:textSize      = "32sp"
+                        android:textSize      = "16sp"
                         android:fontFamily      = "sans-serif-medium"
                         android:textColor     = "#212121"
                         android:text          = "0"
-                        android:singleLine="true"
-                        />
-                    <TextView
-                        android:layout_width  = "wrap_content"
-                        android:layout_height = "match_parent"
-                        android:textSize      = "12sp"
-                        android:fontFamily      = "sans-serif-medium"
-                        android:textColor     = "#616161"
-                        android:text          = "KM AWAY"
-                        android:singleLine="true"
-                        android:gravity="top"
-                        android:layout_marginLeft="8dp"
+                        android:maxLines="3"
                         />
                 </LinearLayout>
 
@@ -133,7 +132,8 @@
                     android:layout_width  = "0dp"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:gravity="center|top">
+                    android:gravity="center|top"
+                    android:layout_marginLeft="4dp">
                     <TextView
                         android:id="@+id/timeView"
                         android:layout_width  = "wrap_content"
@@ -150,7 +150,7 @@
                         android:textSize      = "12sp"
                         android:fontFamily      = "sans-serif-medium"
                         android:textColor     = "#616161"
-                        android:text          = "HOURS LEFT"
+                        android:text          = "HRS LEFT"
                         android:singleLine="true"
                         android:gravity="top"
                         android:layout_marginLeft="8dp"
@@ -161,5 +161,4 @@
         </FrameLayout>
 
     </com.github.florent37.shapeofview.shapes.RoundRectView>
-
 </LinearLayout>

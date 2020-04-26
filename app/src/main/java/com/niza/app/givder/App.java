@@ -79,6 +79,7 @@ public class App extends Application {
     public static String AccountType_Giver ="AccountType_Giver";
 
     public static String MessageType_Request = "MessageType_Request";
+    public static String MessageType_Accept = "MessageType_Accept";
     public static String MessageType_Text = "MessageType_Text";
 
     @Override

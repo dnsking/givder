@@ -29,6 +29,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.niza.app.givder.App;
+import com.niza.app.givder.MainActivity;
 import com.niza.app.givder.MessasingActivity;
 import com.niza.app.givder.NewPostActivity;
 import com.niza.app.givder.R;
@@ -56,6 +57,7 @@ public class ContentFragment extends Fragment {
     private CardStackView card_stack_view;
     private View skip_button,rewind_button,like_button;
     private String myNumber;
+    private String accountType;
     private int currentPosition=-1;
 
     public UserNetworkAction[] getUserNetworkActions() {
@@ -81,6 +83,7 @@ public class ContentFragment extends Fragment {
     public void init(){
         if(card_stack_view!=null&&userNetworkActions!=null){
 
+            ((MainActivity) getActivity()).hideProgressBar();
             card_stack_view.setLayoutManager(new CardStackLayoutManager(getActivity(),
                     new CardStackListener(){
                         @Override
@@ -91,10 +94,8 @@ public class ContentFragment extends Fragment {
                         @Override
                         public void onCardSwiped(Direction direction) {
                             if(direction.equals(Direction.Left)){
-                                App.Log("Swiped left on "+currentPosition);
-                                Snackbar.make(card_stack_view,"Swiped Left",Snackbar.LENGTH_SHORT).show();}
+                                App.Log("Swiped left on "+currentPosition);}
                            else if(direction.equals(Direction.Right)){
-                                Snackbar.make(card_stack_view,"Swiped Right",Snackbar.LENGTH_SHORT).show();
                                 App.Log("Swiped Right on "+currentPosition);
 
                               final GiverMessageNetwork giverMessageNetwork = new GiverMessageNetwork(myNumber
@@ -133,7 +134,6 @@ public class ContentFragment extends Fragment {
                         @Override
                         public void onCardDisappeared(View view, int position) {
 
-                            Snackbar.make(card_stack_view,"Card gone "+position,Snackbar.LENGTH_SHORT).show();
                             App.Log("Card gone "+position);
                             currentPosition = position;
                         }
@@ -180,6 +180,7 @@ public class ContentFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         myNumber = Utils.GetUserName(getActivity());
+        accountType =Utils.GetAccountType(getActivity());
         init();
 
         new Thread(new Runnable() {
@@ -187,6 +188,13 @@ public class ContentFragment extends Fragment {
             public void run() {
                 try {
                     userNetworkActions=      GivderContentHelper.GetContent(getActivity());
+                    ArrayList<UserNetworkAction> userNetworkActionslist = new ArrayList<>();
+                    for(UserNetworkAction item : userNetworkActions){
+                        if(!item.getPhoneNumber().equals(myNumber)&&!item.getType().equals(accountType)){
+                            userNetworkActionslist.add(item);
+                        }
+                    }
+                    userNetworkActions =userNetworkActionslist.toArray(new UserNetworkAction[]{});
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

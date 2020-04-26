@@ -7,6 +7,7 @@ public class GiverMessageNetwork  extends NetworkAction {
     private String to;
     private String message;
     private String type;
+    private String accept;
     public GiverMessageNetwork(){}
     public GiverMessageNetwork( String from, String time,String to,String message,String type){
         this. from=from;
