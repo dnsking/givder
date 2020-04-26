@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_whatshot_black_24dp).setText("FEED"));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_star_black_24dp).setText("MATCHES"));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_public_black_24dp).setText("YOUR POSTS"));
 
 
         // tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#9c27b0"));
@@ -147,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 2;
         }
     }
 }

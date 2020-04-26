@@ -92,15 +92,18 @@
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="bottom"
-                android:layout_marginBottom="8dp">
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp">
 
                 <LinearLayout
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:layout_width  = "0dp"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -109,22 +112,11 @@
                         android:id="@+id/distanceTextView"
                         android:layout_width  = "wrap_content"
                         android:layout_height = "wrap_content"
-                        android:textSize      = "32sp"
+                        android:textSize      = "16sp"
                         android:fontFamily      = "sans-serif-medium"
                         android:textColor     = "#212121"
                         android:text          = "0"
-                        android:singleLine="true"
-                        />
-                    <TextView
-                        android:layout_width  = "wrap_content"
-                        android:layout_height = "match_parent"
-                        android:textSize      = "12sp"
-                        android:fontFamily      = "sans-serif-medium"
-                        android:textColor     = "#616161"
-                        android:text          = "KM AWAY"
-                        android:singleLine="true"
-                        android:gravity="top"
-                        android:layout_marginLeft="8dp"
+                        android:maxLines="3"
                         />
                 </LinearLayout>
 
@@ -133,7 +125,8 @@
                     android:layout_width  = "0dp"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:gravity="center|top">
+                    android:gravity="center|top"
+                    android:layout_marginLeft="4dp">
                     <TextView
                         android:id="@+id/timeView"
                         android:layout_width  = "wrap_content"
@@ -150,8 +143,7 @@
                         android:textSize      = "12sp"
                         android:fontFamily      = "sans-serif-medium"
                         android:textColor     = "#616161"
-                        android:text          = "HOURS LEFT"
-                        android:singleLine="true"
+                        android:text          = "HRS"
                         android:gravity="top"
                         android:layout_marginLeft="8dp"
                         />

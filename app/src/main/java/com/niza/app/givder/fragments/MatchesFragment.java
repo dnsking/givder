@@ -150,7 +150,7 @@ public class MatchesFragment extends Fragment {
 
         @Override
         public int getItemViewType(int position) {
-            if(  giverMessageNetworks[position].equals(App.MessageType_Request))
+            if(  giverMessageNetworks[position].getType().equals(App.MessageType_Request))
                 return 0;
             else return 1;
         }
@@ -211,7 +211,7 @@ public class MatchesFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + giverMessageNetwork.getFrom()));
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("tel:" + giverMessageNetwork.getFrom()));
                         startActivity(intent);
                     }
                 });
