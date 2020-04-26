@@ -1,11 +1,13 @@
 package com.niza.app.givder.fragments;
 
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -13,11 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.niza.app.givder.App;
 import com.niza.app.givder.R;
 import com.niza.app.givder.Utils.UiUtils;
 import com.niza.app.givder.Utils.Utils;
+import com.niza.app.givder.networking.actions.CheckGiverMessageNetwork;
 import com.niza.app.givder.networking.actions.GiverMessageNetwork;
+import com.niza.app.givder.networking.authentication.GivderContentHelper;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -32,6 +38,7 @@ public class MatchesFragment extends Fragment {
 
     private GiverMessageNetwork[] giverMessageNetworkRequests;
     private GiverMessageNetwork[] giverMessageNetworkTexts;
+    private String myNumber;
     public MatchesFragment() {
         // Required empty public constructor
     }
@@ -47,10 +54,49 @@ public class MatchesFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        myNumber = Utils.GetUserName(getActivity());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    giverMessageNetwork=
+                            GivderContentHelper. CheckMessages(getActivity(), new CheckGiverMessageNetwork (myNumber));
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            init();
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
     }
     private void init(){
         if(matchesRecyclerView!=null&&giverMessageNetwork!=null){
 
+            ArrayList<GiverMessageNetwork> giverMessageNetworkRequestsList = new ArrayList<>();
+            ArrayList<GiverMessageNetwork> giverMessageNetworkTextsList = new ArrayList<>();
+
+            for(GiverMessageNetwork item :giverMessageNetwork){
+                if(item.getType().equals(App.MessageType_Request)){
+                    giverMessageNetworkRequestsList.add(item);
+                }
+                else{
+                    giverMessageNetworkTextsList.add(item);
+                }
+            }
+            giverMessageNetworkRequests = giverMessageNetworkRequestsList.toArray(new GiverMessageNetwork[]{});
+            giverMessageNetworkTexts = giverMessageNetworkTextsList.toArray(new GiverMessageNetwork[]{});
+
+            LinearLayoutManager listManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+
+            matchesRecyclerView.setLayoutManager(listManager);
+
+            matchesRecyclerView.setAdapter(new ContentAdapter());
         }
     }
 

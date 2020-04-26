@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private MatchesFragment matchesFragment;
     private MyContributionsFragment myContributionsFragment;
 
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,21 +48,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,NewPostActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,0);
             }
         });
         findViewById(R.id.floating_action_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,NewPostActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,0);
 
             }
         });
 
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+          viewPager = (ViewPager) findViewById(R.id.viewpager);
+         tabLayout = (TabLayout) findViewById(R.id.tabs);
 
 
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_whatshot_black_24dp).setText("FEED"));
@@ -70,16 +73,7 @@ public class MainActivity extends AppCompatActivity {
         // tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#9c27b0"));
        // tabLayout.setTabTextColors(Color.parseColor("#212121"), Color.parseColor("#9c27b0"));
 
-        viewPager.setAdapter(new Adapter());
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
 
-        tabLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                //tabLayout.setupWithViewPager(viewPager);
-            }
-        });
 
         GivderContentDBHelper givderContentDBHelper= new GivderContentDBHelper(this);
         givderContentDBHelper.open();
@@ -88,10 +82,19 @@ public class MainActivity extends AppCompatActivity {
         if(myuserNetworkActions.length>0){
             findViewById(R.id.mainContent).setVisibility(View.VISIBLE);
             findViewById(R.id.asker).setVisibility(View.GONE);
+            init();
         }
         else{
             findViewById(R.id.mainContent).setVisibility(View.GONE);
             findViewById(R.id.asker).setVisibility(View.VISIBLE);}
+
+
+    }
+    private void init(){
+
+        viewPager.setAdapter(new Adapter());
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
     }
     private class Adapter extends FragmentPagerAdapter {
         public Adapter() {

@@ -12,7 +12,10 @@
         app:shape_roundRect_topLeftRadius="10dp"
         app:shape_roundRect_topRightRadius="10dp"
 
+        android:elevation="4dp"
         app:shape_roundRect_borderWidth="0dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
         >
         <FrameLayout
             android:layout_width="match_parent"
